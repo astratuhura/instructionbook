@@ -1,5 +1,5 @@
 import streamlit as st
-
+from src.end_code_block import end_code_block as __
 
 def app ():
     st.header('Google Colab Setup')
@@ -27,6 +27,14 @@ def app ():
     st.write('Plotly could be found here: [link to Plotly](https://plotly.com/)')
     
     
+    def load_dataset(data_link):
+        dataset = pd.read_csv(data_link)
+        return dataset
+    
+    stocks_data = 'https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv'
+    ticker = load_dataset(stocks_data)
+    
+    
     st.markdown('----')
     st.write('Create a variable named "ticker" to represent and store the stock prices as a dataframe:')
     with st.echo():
@@ -44,9 +52,12 @@ def app ():
     with st.echo():
         fig = px.line(ticker, x="Date", y="Open", title='Google Stock Openning Prices')
     
-    st.write('show the data stored in the fig variable:')
-        
-    with st.echo():
-        st.dataframe(ticker)
-        fig = px.line(ticker, x='Date', y='Open')
-        st.plotly_chart(fig)    
+    st.write('Show the actual chart:')
+    
+    __(display=False)
+    fig.show()
+    __()    
+    
+    
+    fig = px.line(ticker, x='Date', y='Open')
+    st.plotly_chart(fig)    
