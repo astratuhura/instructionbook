@@ -28,7 +28,7 @@ class multi_page:
 
     def run(self):
         
-        # the navigation sidebar  
+        # the navigation sidebar
         page = st.sidebar.radio(
             # navigation title
             'Instruction Books', 
