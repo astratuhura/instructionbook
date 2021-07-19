@@ -36,14 +36,18 @@ def app ():
     
     
     st.markdown('----')
-    st.write('Create a variable named "ticker" to represent and store the stock prices as a dataframe:')
-    with st.echo():
-        # variable ticker stores google stock price data as a dataframe object
-        ticker = pd.read_csv('./data/stocks.csv')
-        
+    st.write('Create a variable named "ticker" to represent and store the stock prices as a dataframe. Note that your path to where the data is store may be different. The example show that the data is stored in GitHub.')
+    
+    __(display=False)
+    # variable ticker stores google stock price data as a dataframe object
+    ticker = pd.read_csv('https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv')
+    __()    
+    
+    
     st.write('Show the first 5 rows using the "head" method available from Pandas:')
-    with st.echo():
-        ticker.head()
+    __(display=False)
+    ticker.head()
+    __()
         
     st.dataframe(ticker.head())        
     
