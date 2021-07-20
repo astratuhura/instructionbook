@@ -9,6 +9,7 @@ from multipage import multi_page
 from src import facebook_prophet_stocks
 from src  import welcome
 from src import google_colab
+from src import tsfresh_timeseries_features
 
 # instantiate multipage app handler
 app = multi_page()
@@ -24,6 +25,7 @@ left_col, right_col = st.beta_columns(2)
 # add apps
 app.add_page("Welcome to MBA509", welcome.app)
 app.add_page("Google Colab Setup", google_colab.app)
+app.add_page("TSFRESH: Creating Our First Features", tsfresh_timeseries_features.app)
 app.add_page("Forecasting with Facebook Prophet", facebook_prophet_stocks.app)
 
 # run main app
