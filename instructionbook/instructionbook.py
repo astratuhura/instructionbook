@@ -22,6 +22,8 @@ st.write('This instruction book is a step-by-step guide to Programming in AI/Mac
 # left and right columns
 left_col, right_col = st.beta_columns(2)
 
+st.sidebar.header('Navigation to Instruction Books')
+
 # add apps
 app.add_page("Welcome to MBA509", welcome.app)
 app.add_page("Google Colab Setup", google_colab.app)
