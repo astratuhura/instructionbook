@@ -1,7 +1,7 @@
 #import utils
 import os
+from src.end_code_block import end_code_block as __
 
-from end_code_block import end_code_block as __
 import streamlit as st
 import pandas as pd
 import numpy as np
