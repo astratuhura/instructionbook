@@ -30,8 +30,7 @@ def app():
         dataset = pd.read_csv(data_link)
         return dataset
     
-    stocks_data = 'https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv'
-    ticker = load_dataset(stocks_data)
+    # ticker = pd.read_csv('https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv')
     
     
     st.markdown('----')
