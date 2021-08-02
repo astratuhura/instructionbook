@@ -26,32 +26,48 @@ def app():
 
     st.write('Step #2: load data with Pandas library')
 
-    with st.echo():
-        def load_dataset(data_link):
-            dataset = pd.read_csv(data_link)
-            return dataset
-
-
-    stocks_data = 'https://raw.githubusercontent.com/deusexmagicae/guidebook/main/guidebook/stocks.csv'
-    data = load_dataset(stocks_data)
-
-    with st.echo():
-        st.dataframe(data)
-        fig = px.line(data, x='Date', y='Open')
-        st.plotly_chart(fig)
-
+    def load_dataset(data_link):
+        dataset = pd.read_csv(data_link)
+        return dataset
+    
+    stocks_data = 'https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv'
+    ticker = load_dataset(stocks_data)
+    
+    
+    st.markdown('----')
+    st.write('Create a variable named "ticker" to represent and store the stock prices as a dataframe. Note that your path to where the data is store may be different. The example show that the data is stored in GitHub.')
+    
+    __(display=False)
+    # variable ticker stores google stock price data as a dataframe object
+    ticker = pd.read_csv('https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/stocks.csv')
+    __()    
+    
+    
+    st.write('Show the first 5 rows using the "head" method available from Pandas:')
+    __(display=False)
+    ticker.head()
+    __()
         
+    st.dataframe(ticker.head())        
+    
+    st.write('Create a simple plot of Google Stock Price. Notes: fig is the name of the variable that holds the data to plot. Remember also that "px" is an alias for Plotly.')
+    st.write('what we are asking Plotly to do is create a line chart where the horizontal x-axis is the Data and the vertical y-axis is the openning price of the stock. Finally, we tell Plotly to give the chart a title.')
     with st.echo():
-        data['Date'] =pd.to_datetime(data.Date)
-        data.sort_values(by='Date', inplace=True)
-        st.dataframe(data)
-        fig = px.line(data, x='Date', y='Open')
-        st.plotly_chart(fig)
+        diagram = px.line(ticker, x="Date", y="Open", title='Google Stock Openning Prices')
+    
+    st.write('Show the actual chart:')
+    
+    __(display=False)
+    diagram.show()
+    __()
+    
+    fig = px.line(ticker, x='Date', y='Open')
+    st.plotly_chart(fig)
         
 
     st.header('Get Opening Stock Price for Forecasts')   
     with st.echo():
-        data_forecast = data[['Date','Open']]
+        data_forecast = ticker[['Date','Open']]
         st.dataframe(data_forecast)     
 
     st.header('Prepare data for Prophet')
@@ -84,7 +100,7 @@ def app():
     st.write(fig1)
     st.write(fig2)
 
-    prophet_chart = alt.Chart(data).mark_circle().encode(
+    prophet_chart = alt.Chart(ticker).mark_circle().encode(
         x='Date', y='Open', tooltip=['Date', 'Open'])
 
     st.write(prophet_chart)

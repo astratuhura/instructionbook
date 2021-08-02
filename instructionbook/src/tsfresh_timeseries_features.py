@@ -87,3 +87,9 @@ def app():
                 df = pd.read_csv('/content/drive/MyDrive/MBA/Share-of-Exports-in-Diamonds.csv')
                 ```
                 """)    
+    
+    
+    st.markdown('----')
+    st.header('From here onwards, simply  follow the steps in Google Colab.')
+    st.header('For Lesson #3 Extra Activity: see example on forecasting time series with Facebook Prophet.')
+    

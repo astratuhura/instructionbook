@@ -28,7 +28,7 @@ st.sidebar.header('Navigation to Instruction Books')
 app.add_page("Welcome to MBA509", welcome.app)
 app.add_page("Lesson #2: Google Colab Setup", google_colab.app)
 app.add_page("Lesson #3: TSFRESH: Creating Our First Features", tsfresh_timeseries_features.app)
-app.add_page("Extra: Forecasting with Facebook Prophet", facebook_prophet_stocks.app)
+app.add_page("Lesson #3 Extra: Timeseries Forecasting with Facebook Prophet", facebook_prophet_stocks.app)
 
 # run main app
 app.run()
