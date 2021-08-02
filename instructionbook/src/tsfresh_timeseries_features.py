@@ -91,5 +91,10 @@ def app():
     
     st.markdown('----')
     st.header('From here onwards, simply  follow the steps in Google Colab.')
+    
+    st.write('For more information on [tsfresh](https://tsfresh.com/)')
+    
+    st.write('An example of using tsfresh [tsfresh airlines](https://www.sktime.org/en/latest/examples/feature_extraction_with_tsfresh.html)')
+    
     st.header('For Lesson #3 Extra Activity: see example on forecasting time series with Facebook Prophet.')
     
