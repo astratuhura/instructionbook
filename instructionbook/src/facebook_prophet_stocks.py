@@ -49,7 +49,7 @@ def app():
         
     st.dataframe(ticker.head())        
     
-    st.write('Create a simple plot of Google Stock Price. Notes: fig is the name of the variable that holds the data to plot. Remember also that "px" is an alias for Plotly.')
+    st.write('Create a simple plot of Google Stock Price. Notes: diagram is the name of the variable that holds the data to plot. Remember also that "px" is an alias for Plotly.')
     st.write('what we are asking Plotly to do is create a line chart where the horizontal x-axis is the Data and the vertical y-axis is the openning price of the stock. Finally, we tell Plotly to give the chart a title.')
     with st.echo():
         diagram = px.line(ticker, x="Date", y="Open", title='Google Stock Openning Prices')
@@ -72,7 +72,7 @@ def app():
     st.header('Prepare data for Prophet')
     with st.echo():
         data_forecast.rename(columns={'Date':'ds', 'Open':'y'}, inplace=True)
-        data_forecast.sort_values(by='ds', inplace=True)
+        # data_forecast.sort_values(by='ds', inplace=True)
         st.dataframe(data_forecast)
         
 
