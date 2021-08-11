@@ -10,6 +10,7 @@ from src import facebook_prophet_stocks
 from src  import welcome
 from src import google_colab
 from src import tsfresh_timeseries_features
+from src import data_preprocess_featuretools
 
 # instantiate multipage app handler
 app = multi_page()
@@ -29,6 +30,8 @@ app.add_page("Welcome to MBA509", welcome.app)
 app.add_page("Lesson #2: Google Colab Setup", google_colab.app)
 app.add_page("Lesson #3: TSFRESH: Creating Our First Features", tsfresh_timeseries_features.app)
 app.add_page("Lesson #3 Extra: Timeseries Forecasting with Facebook Prophet", facebook_prophet_stocks.app)
+
+app.add_page("Lesson #4: Python, Data Preprocessing & Featuretools", data_preprocess_featuretools.app)
 
 # run main app
 app.run()
