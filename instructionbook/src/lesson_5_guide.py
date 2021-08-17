@@ -105,5 +105,17 @@ def app():
             - (1) Define the entity set with feature tools.
             - (2) Create an entity set from the dataframe
             - (3) Ask featuretools to use Deep Feature Synthesis (DFS) https://featuretools.alteryx.com/en/stable/getting_started/afe.html
+            - (4) normalise to create the relationships
+            - (5) finally, generate new features
         """
-    )    
+    )
+    
+    st.write('Once new features have been generated, we go through three basic process to clean up our data.')  
+    st.write(
+        """    
+        - Process: https://featuretools.alteryx.com/en/stable/guides/feature_selection.html
+            - (1) Remove highly NULL values
+            - (2) Remove highly singular values (have no variance)
+            - (3) Remove highly correlated Values
+        """
+    )  
