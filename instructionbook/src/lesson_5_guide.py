@@ -130,3 +130,8 @@ def app():
             - (2) Scikit-Learn Random Forest: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
         """
     )
+    
+    st.markdown('----')
+    st.header('The Second Notebook')
+    st.write('Notebook two uses the same features created during notebook one, but, instead of manually using ML algorithms, we use EvalML to automatically search for best machine learning models.')
+    st.write('EvalML official (https://evalml.alteryx.com/en/stable/)')
