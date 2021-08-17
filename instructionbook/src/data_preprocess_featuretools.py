@@ -181,4 +181,4 @@ def app():
     listings_groupby_first_review =  listings.groupby('first_review')
     
     __()
-    st.write('More information and examples on groupby can be found at the [offcial Pandas documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)')
+    st.write('More information and examples on groupby can be found at the [official Pandas documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)')
