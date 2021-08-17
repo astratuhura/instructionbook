@@ -96,3 +96,14 @@ def app():
         diamonds['cut'] = label_cut.fit_transform(diamonds['cut'])
         diamonds['color'] = label_color.fit_transform(diamonds['color'])
         diamonds['clarity'] = label_clarity.fit_transform(diamonds['clarity'])        
+    
+    st.header('Creating features with Featuretools')
+    st.write('After cleaning the data, we can now create new features with featuretools.')
+    st.write(
+        """    
+        - STEPS:
+            - (1) Define the entity set with feature tools.
+            - (2) Create an entity set from the dataframe
+            - (3) Ask featuretools to use Deep Feature Synthesis (DFS) https://featuretools.alteryx.com/en/stable/getting_started/afe.html
+        """
+    )    
