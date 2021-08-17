@@ -119,3 +119,14 @@ def app():
             - (3) Remove highly correlated Values
         """
     )  
+    
+    st.header('Machine Learning')
+    st.write('Once the features have been generated and cleaned, we can now apply machine learning.')
+    st.write('For ML, we introduce two basic methods:')
+    st.write(
+        """    
+        - Algorithms:
+            - (1) Scikit-Learn logistics regression: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+            - (2) Scikit-Learn Random Forest: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
+        """
+    )
