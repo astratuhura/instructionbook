@@ -12,6 +12,7 @@ from src import google_colab
 from src import tsfresh_timeseries_features
 from src import data_preprocess_featuretools
 from src import lesson_5_guide
+from src import sentiment_analysis
 
 # instantiate multipage app handler
 app = multi_page()
@@ -34,6 +35,7 @@ app.add_page("Lesson #3 Extra: Timeseries Forecasting with Facebook Prophet", fa
 
 app.add_page("Lesson #4: Python, Data Preprocessing & Featuretools", data_preprocess_featuretools.app)
 app.add_page("Lesson #5: Guide to Predicting Diamond Prices", lesson_5_guide.app)
+app.add_page("Lesson #7: Using Deep Learning AI/ML for Sentiments Analysis", sentiment_analysis.app)
 
 # run main app
 app.run()
