@@ -64,3 +64,23 @@ def app():
     st.markdown('----')
     st.header('STEP 3: Load & Pre-process Dataset')
     
+    __(display=False)
+    # diamonds dataframe created from csv file read and loaded by pandas
+    tweets = pd.read_csv('https://raw.githubusercontent.com/deusexmagicae/instructionbook/main/instructionbook/data/twitter_tweets.csv')
+    __()
+    
+    st.write('The first 10 rows of the tweets.')
+    with st.echo():
+        # show the tweets dataset
+        tweets
+        
+    st.dataframe(tweets.head(10))
+    
+    st.write('Show tweets with negative sentiments.')
+    
+    with st.echo():
+        # find negative sentiments
+        tweets[tweets['target'].str.match('n')]
+        
+    st.dataframe(tweets[tweets['target'].str.match('n')])
+    
