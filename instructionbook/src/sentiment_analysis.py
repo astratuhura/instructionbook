@@ -20,3 +20,47 @@ def app():
             - (8) Create some tweets and make predictions.   
         """
     )
+    
+    st.markdown('----')
+    st.header('STEP1: Installations')
+    st.write('We go through the usual installation processes and remember to wait for it to run to completion, look for the "RESTART RUNTIME" button within the installation process output messages.')
+    
+    st.markdown("""
+                ```
+                # install ludwig libraries
+                !pip install ludwig
+                !pip install ludwig[text]
+                !pip install ludwig[visualize]
+                !pip install petastorm
+                ```  
+                """)
+    
+    st.markdown('----')
+    st.header('STEP 2: Import libraries')
+    st.write('Once the libraries have been installed, they can now be imported for use.')
+    st.markdown("""
+                ```
+                # import ludwig libraries
+                import ludwig
+                from ludwig.api import LudwigModel
+                from ludwig.visualize import learning_curves, compare_performance, compare_classifiers_predictions
+                from ludwig import visualize
+                from ludwig.utils.nlp_utils import load_nlp_pipeline, process_text
+                from ludwig.utils.data_utils import load_json
+                
+                # import libraries to create a word cloud
+                from wordcloud import WordCloud, STOPWORDS
+                
+                # import visualisation and core libraries
+                from matplotlib import pyplot as plt
+                import yaml
+                import pandas as pd
+                import numpy as np
+                
+                import logging
+                ```  
+                """)
+    
+    st.markdown('----')
+    st.header('STEP 3: Load & Pre-process Dataset')
+    
