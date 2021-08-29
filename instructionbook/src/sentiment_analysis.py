@@ -10,7 +10,7 @@ def app():
     st.markdown('----')
     st.write(
         """    
-        - STEPS:
+        - What we will do:
             - (1) Go through the usual installation process to install the required libraries. Note: wait until the installation completes and then re-start the Colab runtime using the button displayed in the output messages of the installation process.
             - (2) Import the libraries.
             - (3) Load the Twitter Tweets dataset.
@@ -129,3 +129,71 @@ def app():
     
     word_cloud = Image.open('./src/word_cloud.png')
     st.image(word_cloud, caption='tweeter word cloud')
+    
+    st.markdown('----')
+    st.header('STEP 5: Machine Learning with Ludwig AI')
+    
+    st.write('Ludwig AI (from Uber) is a platform built ontop of Tensorflow & Keras (from Google).')
+    st.write('Ludwig provides a simple declarative method for building and using AI/ML. For example, the basic skeleton of using Ludwig  is given below:')
+    
+    st.markdown("""
+        ```
+        # import ludwig
+        from ludwig.api import LudwigModel
+
+        # create instructions for building model
+        config = {...}
+        
+        # build the model
+        model = LudwigModel(config)
+        
+        # tain the model
+        training_statistics, preprocessed_data, output_directory = model.train(dataset=dataset_file_path)
+        
+        # or
+        training_statistics, preprocessed_data, output_directory = model.train(dataset=dataframe)
+        ```
+        """)
+        
+    
+    st.write('The essential part is the construction of the instruction that Ludwig needs as a configuration:')
+    
+    
+    with st.echo():
+        # ludwig requires a configuration setting in order to create the AI model
+        # note that the input features describe the data seen in the tweet dataset
+        # For example, there is a 'text' column of data and its datatype is text
+        # We can also tell Ludwig that we want to use a parallel_cnn
+        # The target - this is what we want to predict and in our twitter dataset, 
+        # they are either the positive or  negative sentiments
+        config = {
+            'input_features': [{ 
+                'name': 'text',
+                'type': 'text', 
+                'level': 'word', 
+                'encoder': 'parallel_cnn'
+            }],
+            'output_features': [{
+                'name': 'target', 
+                'type': 'category'}],
+            'training': {
+                'decay': True,
+                'learning_rate': 0.001,
+                'epochs': 5,
+                'validation_field': 'target',
+                'validation_metric': 'accuracy'
+            }
+        }
+        
+    st.write('More information on Ludwig Programmatic API: https://ludwig-ai.github.io/ludwig-docs/user_guide/programmatic_api/')
+    st.write('And the very important instructions on the creation of the configuration: https://ludwig-ai.github.io/ludwig-docs/user_guide/configuration/ ')
+    
+    st.header('Important Notes on Machine Learning')
+    st.write(
+        """
+        - Notes:
+            - (1) Epochs: one epoch is when an ENTIRE dataset is passed forward and backward through the neural network only ONCE. The higher the number of epochs the more the AI/ML will learn and have a chance to increase its accuracy. However, increasing the number of epochs also increase the demand for time and compute resources.
+            - (2) Learning rate: when AI/ML searches for an optimal solution, the search space resembles hills and valleys. What is desirable is to find, by descending down a gradient of a hill, towards the lowest valley, which indicates the minimum "loss". This is essentially what learning rate indicates (sometimes called the step-size). Too low a learning rate - the process of walking down the towards the valley takes too long; too high and the learning process will be much more unstable.
+            - (3) For more information on learning rate: https://developers.google.com/machine-learning/crash-course/reducing-loss/learning-rate
+        """
+    )
