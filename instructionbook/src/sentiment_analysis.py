@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 from src.end_code_block import end_code_block as __
 
 def app():
@@ -84,3 +85,47 @@ def app():
         
     st.dataframe(tweets[tweets['target'].str.match('n')])
     
+    st.subheader('Training, Testing and Validation (Sub)-Datasets')
+    st.write(
+        """
+        To prepare for ML, we want to create three smaller datasets.
+        What we use is Pandas sampling method: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html. Note that we are taking a small fraction of the full Twitter tweets dataset.
+        - Sub-datasets:
+            - (1) Training: used for teaching ML.
+            - (2) Validation: not used to directly train  AI/ML i.e., withheld from training. Used to give an estimate of how well the  model learned during training while also tuning the model's hyperparameters.
+            - (3) Test dataset: used to give an unbiased estimate of the model's skill.   
+        """
+    )
+    
+    st.markdown("""
+                ```
+                # take 1% of the data for training
+                tweets_train = tweets.sample(frac=0.01, replace=False, random_state=3)
+                ```  
+                """)
+    
+    st.markdown('----')
+    st.header('STEP 4: Exploratory Data Analysis')
+    st.write('The analysis that is performed in this section is the creation of a word cloud.')
+    st.markdown("""
+                ```
+                # use the entire tweets
+                processed_train_data = process_text(' '.join(tweets['text']),
+                                    load_nlp_pipeline('en'),
+                                    filter_punctuation=True,
+                                    filter_stopwords=True)
+                                    
+                # create the word cloud variable to store the words
+                wordcloud = WordCloud(background_color='black', collocations=False,
+                      stopwords=STOPWORDS).generate(' '.join(processed_train_data))
+                
+                # use matplotlib to visualise the data stored in wordcloud variable
+                plt.figure(figsize=(16,16))
+                plt.imshow(wordcloud.recolor(color_func=lambda *args, **kwargs:'white'), interpolation='bilinear')
+                plt.axis('off')
+                plt.show()                          
+                ```  
+                """)
+    
+    word_cloud = Image.open('./src/word_cloud.png')
+    st.image(word_cloud, caption='tweeter word cloud')
