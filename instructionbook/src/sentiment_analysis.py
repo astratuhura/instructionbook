@@ -127,8 +127,8 @@ def app():
                 ```  
                 """)
     
-    word_cloud = Image.open('./src/word_cloud.png')
-    st.image(word_cloud, caption='tweeter word cloud')
+    # word_cloud = Image.open('word_cloud.png')
+    # st.image(word_cloud, caption='tweeter word cloud')
     
     st.markdown('----')
     st.header('STEP 5: Machine Learning with Ludwig AI')
