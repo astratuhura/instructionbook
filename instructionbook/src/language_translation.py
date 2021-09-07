@@ -106,8 +106,6 @@ def app():
                 ```  
                 """)
     
-    st.markdown('----')
-    
     
     # word_cloud = Image.open('word_cloud.png')
     # st.image(word_cloud, caption='tweeter word cloud')
