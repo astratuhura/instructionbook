@@ -189,7 +189,7 @@ def app():
         """
     )
     
-    st.header('STEP 4: Train Ludwig AI')
+    st.header('STEP 5: Train Ludwig AI')
     st.write('The example instruction for Ludwig is for English-to-Hindi:')
     st.markdown("""
         ```
@@ -198,7 +198,7 @@ def app():
         ```
         """)
     
-    st.header('STEP 5: Translate From English to Another Language')
+    st.header('STEP 6: Translate From English to Another Language')
     st.write('The example instruction for Ludwig is for English-to-Hindi.')
     
     with st.echo():
